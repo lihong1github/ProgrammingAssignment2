@@ -17,7 +17,7 @@ makeCacheMatrix <- function(x = matrix()) {
                 get_matrix <- function() x # Return the value from input matrix "x"
                 
                 # function used to store cache data
-                set_matrix_inverse <- function(my_matrix_inverse) matrix.inverse_cache <<- my_matrix_inverse
+                set_matrix_inverse <- function(cache_data) matrix.inverse_cache <<- cache_data
                 get_matrix_inverse <- function() matrix.inverse_cache # return the value from matrix.inverse_cache
                 
                 list(set_matrix.new=set_matrix.new,
@@ -42,7 +42,7 @@ cacheSolve <- function(x, ...) {
         }
         data <- x$get_matrix() # get the data from the makeCacheMatrix object 
         matrix.inverse_cache <- solve(data, ...) # calculate the inverse of the matrix
-        x$set_matrix_inverse(matrix.inverse_cache) # add the calculated data to "makeCacheMatrix" object
+        x$set_matrix_inverse(cache_data = matrix.inverse_cache) # add the calculated data to "makeCacheMatrix" object
         matrix.inverse_cache # print the value on the console
         
 }
