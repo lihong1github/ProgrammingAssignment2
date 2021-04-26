@@ -47,23 +47,30 @@ cacheSolve <- function(x, ...) {
         
 }
 
-A <- matrix( c(5, 1, 0,
+
+# examples of 3 by 3 matrix
+x1 <- matrix( c(5, 1, 0,
                3,-1, 2,
                4, 0,-1), nrow=3, byrow=TRUE)
 
-x <- matrix(c(1,2, 4,9), nrow = 2)
-
-y <- matrix(1:9, nrow = 3)
-
-my_matrix <- makeCacheMatrix(y)
-
+my_matrix <- makeCacheMatrix(x1)
 cacheSolve(my_matrix) 
- 
-A %*% cacheSolve(my_matrix) 
+x1 %*% cacheSolve(my_matrix) 
+
+# example of 2 by 2 matrix
+x2 <- matrix(c(1,2, 4,9), nrow = 2)
+
+my_matrix <- makeCacheMatrix(x2)
+cacheSolve(my_matrix) 
+x2 %*% cacheSolve(my_matrix) 
+
+# non-invertible matrix
+x3 <- matrix(1:9, nrow = 3)
+my_matrix <- makeCacheMatrix(x3)
 
 
 
 
-det(x)
+
 
 
