@@ -4,7 +4,8 @@
 ## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) {
-        if(det(x)==0) {print("This matrix is not invertible (determinant equals zero)")}
+        # check to see if the input matrix data can be inverted
+        if(det(x)==0) {print("error: this matrix is not invertible (determinant equals zero). Use different input matrix.")}
         
         else {
                 matrix.inverse_cache <- NULL # initialize matrix_cache variable for later use
@@ -41,26 +42,27 @@ cacheSolve <- function(x, ...) {
         }
         data <- x$get_matrix() # get the data from the makeCacheMatrix object 
         matrix.inverse_cache <- solve(data, ...) # calculate the inverse of the matrix
-        x$set_matrix_inverse(matrix.inverse_cache)
+        x$set_matrix_inverse(matrix.inverse_cache) # add the calculated data to "makeCacheMatrix" object
         matrix.inverse_cache # print the value on the console
         
 }
 
-
-my_matrix$get_matrix_inverse()
+A <- matrix( c(5, 1, 0,
+               3,-1, 2,
+               4, 0,-1), nrow=3, byrow=TRUE)
 
 x <- matrix(c(1,2, 4,9), nrow = 2)
 
-my_matrix <- makeCacheMatrix(x)
+y <- matrix(1:9, nrow = 3)
+
+my_matrix <- makeCacheMatrix(y)
 
 cacheSolve(my_matrix) 
  
-x %*% cacheSolve(my_matrix) 
+A %*% cacheSolve(my_matrix) 
 
 
 
-solve(x)
-solve(x) %*% x
 
 det(x)
 
